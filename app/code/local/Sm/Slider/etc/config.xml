@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<config>
+	<global>
+		<models>
+            <slider>
+                <class>Sm_Slider_Model</class>
+            </slider>
+        </models>
+		<blocks>
+            <slider>
+                <class>Sm_Slider_Block</class>
+            </slider>
+        </blocks>				
+		<helpers>
+            <slider>
+                <class>Sm_Slider_Helper</class>
+            </slider>
+        </helpers>
+        <resources>
+        	<slider_setup>
+        		<setup>
+        			<module>Sm_Slider</module>
+        		</setup>
+				<connection>
+					  <use>core_setup</use>
+				</connection>
+        	</slider_setup>
+        </resources>
+	</global>
+	<frontend>
+        <routers>
+			<slider>
+                <use>standard</use>
+                <args>
+                    <module>Sm_Slider</module>
+                    <frontName>slider</frontName>
+                </args>
+            </slider>
+        </routers>
+		<layout>
+            <updates>
+                <slider module="Sm_Slider">
+					<file>sm/slider.xml</file>
+                </slider>
+            </updates>
+        </layout>
+        <translate>
+      		<modules>
+          		<Sm_Slider>
+                     <files>
+                          <default>Sm_Slider.csv</default>
+                     </files>
+                </Sm_Slider>
+            </modules>
+        </translate>
+	</frontend>
+	<adminhtml>
+        <translate>
+      		<modules>
+          		<Sm_Slider>
+                     <files>
+                          <default>Sm_Slider.csv</default>
+                     </files>
+                </Sm_Slider>
+            </modules>
+        </translate>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>										
+										<slider_cfg translate="title" module="slider">
+											<title>SM Slider Settings</title>
+										</slider_cfg>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				 <slider module="Sm_Slider">
+					<file>sm/slider.xml</file>
+                </slider>
+			</updates>
+		</layout>
+	</adminhtml>
+	<default>
+        <slider_cfg>
+			<general>
+				<active>1</active>
+				<!-- <title>SM Slider</title> -->
+				<nb_column0>4</nb_column0>
+				<nb_column1>3</nb_column1>
+				<nb_column2>2</nb_column2>
+				<nb_column3>2</nb_column3>
+				<nb_column4>1</nb_column4>
+				<slider_title_text>Title Slider</slider_title_text>
+				<product_links_target>_self</product_links_target>
+				<theme>theme1</theme>
+				<button_display>1</button_display>
+				<control>style</control>
+				<anchor>top</anchor>				
+			</general>
+
+			<source_options>
+				<product_source>0</product_source>
+				<product_category></product_category>
+				<child_category_products>1</child_category_products>
+				<max_depth>1</max_depth>
+				<product_featured>0</product_featured>
+				<product_order_by>name</product_order_by>
+				<product_order_dir>ASC</product_order_dir>
+				<product_limitation>5</product_limitation>
+				<product_additem></product_additem>
+				<product_ids></product_ids>
+			</source_options>
+				
+			<product_options>
+				<product_title_display>1</product_title_display>
+				<product_title_maxlength>25</product_title_maxlength>
+				
+				<product_image_width>200</product_image_width>
+				<product_image_height>200</product_image_height>
+				
+				<product_description_display>1</product_description_display>
+				<product_description_maxlength>150</product_description_maxlength>
+				<product_description_striptags>1</product_description_striptags>
+				<product_description_keeptags></product_description_keeptags>				
+				<product_price_display>1</product_price_display>
+				<product_reviews_count>1</product_reviews_count>	
+				<product_addcart_display>1</product_addcart_display>
+                <product_addwishlist_display>1</product_addwishlist_display>
+                <product_addcompare_display>1</product_addcompare_display>
+				<product_readmore_display>1</product_readmore_display>
+				<product_readmore_text>Details</product_readmore_text>
+			</product_options>
+	
+			<image_options>
+				<imgcfg_from_product_image>1</imgcfg_from_product_image>
+				<imgcfg_from_product_description>1</imgcfg_from_product_description>
+				<!-- <imgcfg_from_external>1</imgcfg_from_external>
+				<imgcfg_external_url></imgcfg_external_url> -->
+				<imgcfg_order>product_image, product_description</imgcfg_order>
+				<imgcfg_function>1</imgcfg_function>
+				<imgcfg_width>200</imgcfg_width>
+				<imgcfg_height>200</imgcfg_height>
+				<imgcfg_constrainOnly>false</imgcfg_constrainOnly>
+				<imgcfg_keepAspectRatio>true</imgcfg_keepAspectRatio>
+				<imgcfg_keepFrame>true</imgcfg_keepFrame>
+				<imgcfg_keepTransparency>true</imgcfg_keepTransparency>
+				<imgcfg_background>FFFFFF</imgcfg_background>
+				<imgcfg_placeholder>sm/slider/images/nophoto.jpg</imgcfg_placeholder>
+			</image_options>
+	
+			<effect_options>
+				<play>1</play>
+				<start>1</start>
+				<scroll>1</scroll>
+				<duration>800</duration>
+				<delay>2500</delay>
+				<stop>1</stop>
+			</effect_options>
+
+			<advanced>
+				<include_jquery>1</include_jquery>
+				<pretext></pretext>
+				<posttext></posttext>
+			</advanced>
+        </slider_cfg>
+    </default>
+</config>

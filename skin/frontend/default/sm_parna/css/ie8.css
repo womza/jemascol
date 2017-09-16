@@ -1,0 +1,18 @@
+#cpanel_wrapper .cpanel-reset:before {
+ border-color:#0291FF;
+ border-width: 0px;
+}
+/*-------------parna---------------------*/
+#yt_header .yt-header-top-wrap{
+	border-bottom:1px solid #e3e1e1;
+}
+.sm-serachbox-pro .jqTransformInputWrapper input.input-text,
+.block-newsletter #newsletter-validate-detail #newsletter{
+	line-height:40px;
+}
+#yt_header #yt_menu_short:hover .yt-menu-content{
+	display:none;
+}
+#yt_header #yt_menu_short:hover .yt-menu-content{
+	display:block !important;
+}

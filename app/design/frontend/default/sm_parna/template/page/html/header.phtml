@@ -1,0 +1,231 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+ /*navbar-fixed-top*/
+global $var_yttheme;?>
+<div class="yt-header-top-wrap">
+<div class="yt-header-top">
+	<div class="container">
+		<div class="row">
+        	<div class="header-top-left col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                 <?php if($this->getLayout()->createBlock('cms/block')->setBlockId('header-promotion-slide')->toHtml()) { ?>  
+                	<div class="promotion">                	
+                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('header-promotion-slide')->toHtml(); ?>
+                    </div>
+            	<?php } ?>
+            </div>
+            <script type="text/javascript">
+				jQuery(document).ready(function($){
+				$('.slide-promotion').carousel({
+				  interval: 3500
+				})
+				})
+			</script>
+            <div class="header-top-right col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="inner">
+            	<div class="quicklink-desk">                
+                 <?php echo $this->getChildHtml('topLinks');?>
+                 </div>
+                 <div class="quicklink-mobile">
+                 	<a class="btn-quicklink"></a>
+                    <div class="quicklink-mobile-content">
+                    	<?php echo $this->getChildHtml('topLinks');?>
+                    </div>
+                 </div>
+                 <script>
+					jQuery(document).ready(function($){
+						$( ".btn-mobile-h" ).click(function() {
+							$(this).next('.show-content-mobile').slideToggle(200);
+							$(this).toggleClass('active_btn_mobile');
+						});
+					});
+				</script>
+                 <!--<div class="cart-mobile" id="cart-mobile">
+	                <div class="cart-mobile-inner"></div>
+                 </div>-->
+                 	<?php //echo $this->getChildHtml('mini-cartpro2') ?>
+                    <script>
+					/*
+					jQuery(document).ready(function($){					
+                    if( $('.yt-main-menu1 .mini-cartpro').length && $('#cart-mobile .cart-mobile-inner').length && $(window).width() < 768){
+                       $('#cart-mobile .cart-mobile-inner').html($('.yt-main-menu1 .mini-cartpro').html());
+                       $('.yt-main-menu1 .mini-cartpro').remove();
+                    }
+					});*/
+					</script>
+         
+                 
+                 <div class="language-currency">
+					 <?php echo $this->getChildHtml('currency'); ?>
+                     <?php echo $this->getChildHtml('store_language') ?>
+                 </div>					
+            </div>
+            </div>
+		</div>
+	</div>
+</div>
+<div class="yt-header-content">
+	<div class="container">
+		<div class="row">
+			<div class="logo col-lg-3 col-md-3 col-sm-3 col-xs-12">
+				<a title="SM Parna - Magento Online Store" href="<?php echo $this->getUrl('') ?>">                
+            		<img alt="<?php echo $this->getLogoAlt() ?>" src="<?php echo $this->getSkinUrl();?>/images/<?php echo $var_yttheme->getParam('sitestyle');?>/logo.png">           							                
+           	 	</a>
+                <p class="logo-desc"><?php echo $this->__('The Destination For Beauty')?></p>
+			</div>
+            
+			<div class="yt-main-menu col-lg-9 col-md-9 col-sm-9 col-xs-12">
+            	<div class="yt-main-menu1">
+                	<div class="inner">
+            			<?php echo $this->getChildHtml('mini-cartpro') ?>
+                        <?php if($this->getLayout()->createBlock('cms/block')->setBlockId('hotline')->toHtml()) { ?>
+                        	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('hotline')->toHtml(); ?>
+            			<?php } ?>
+                    </div>
+            	</div>
+                <div class="yt-main-menu2">
+            		<?php echo $this->getChildHtml('searchbox') ?>
+                    <div class="btn-login-regis">
+                    	<?php 
+						//if(Mage::getSingleton('customer/session')->isLoggedIn())
+						if(!$this->helper('customer')->isLoggedIn() ){ ?>                            
+                            <a title="<?php echo $this->__("Register"); ?>" class="register-btn btn-head" href="<?php echo Mage::getBaseUrl(); ?>customer/account/create/">
+                            <?php echo $this->__("Register"); ?></a>                           
+                        <?php } ?>
+                        <?php if(!$this->helper('customer')->isLoggedIn() ){ ?>
+                            <a title="<?php echo $this->__("Login"); ?>" class="login-btn btn-head" data-toggle="modal" data-target="#loginForm">
+                                <?php echo $this->__("Login"); ?>
+                            </a>
+                        <?php } else{ ?>
+                        	<a title="<?php echo $this->__("Logout"); ?>" class="login-btn btn-head" href="<?php echo $this->getUrl('customer/account/logout') ?>">
+                                <?php echo $this->__("Logout"); ?>
+                            </a>
+                        <?php } ?>
+                        </div>
+                   <!-- Modal -->
+                    <div class="modal fade" id="loginForm" tabindex="-1" role="dialog" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <!--<div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Modal title</h4> aria-labelledby="myModalLabel"
+                          </div>-->
+                          <div class="modal-body">
+                            <?php echo $this->getChildHtml('customer_form_mini_login') ?>
+                          </div>
+                          
+                        </div>
+                      </div>
+                    </div>                  
+            	</div>				
+			</div>
+			
+		</div>
+	</div>
+</div>
+</div>
+
+<?php //if( $var_yttheme->isHomepage()) { 
+if( Mage::getSingleton('cms/page')->getIdentifier() == 'home'  && 
+				Mage::app()->getFrontController()->getRequest()->getRouteName() == 'cms' ) { /* if is home page*/
+?>
+<div class="yt-header-bottom">
+<div class="container">
+<div class="row">
+    <div id="yt_header_left" class="col-lg-3 col-md-3 col-sm-0 col-xs-12">
+        <div id="yt-responsivemenu" class="yt-responsivemenu">
+            <?php echo $this->getChildHtml('mobiMenu'); ?>
+        </div>
+        <div class="yt-menu">
+        	<div id="btn_categories">
+            	<span><i class="icon-reorder"></i><?php echo $this->__("Categories"); ?></span>
+            </div>
+            <div class="yt-menu-content">
+            <?php if( $var_yttheme->getParam('menustyle') == 'mega' ){
+                echo $this->getChildHtml('megaMenu');
+            } else {
+                echo $this->getChildHtml('topMenu');
+            } ?>
+            </div>
+        </div>
+        <div class="search-mobile">
+        	<a class="btn-search-mobile"><?php echo $this->__("Search"); ?></a>
+        	<?php echo $this->getChildHtml('topSearch') ?>
+        </div>
+    </div>
+  
+    <div id="yt_header_right" class="col-main col-lg-9 col-md-9 col-sm-12 col-xs-12">	
+        <?php if( $this->getChildHtml('slider_images_home') ){ ?>
+        <div class="yt-slideshow">            
+            <?php echo $this->getChildHtml('slider_images_home') ?>  
+        </div>            
+        <?php } ?>
+    </div>
+</div>
+</div>
+</div>
+<?php } 
+else {
+?>
+<div class="yt-header-bottom">
+<div class="container">
+<div class="row">
+    <div id="yt_header_left" class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+        <div id="yt-responsivemenu" class="yt-responsivemenu">
+            <?php echo $this->getChildHtml('mobiMenu'); ?>
+        </div>
+        <div id="yt_menu_short">
+        	<div id="btn_categories" >
+            	<span><i class="icon-reorder"></i><?php echo $this->__("Categories"); ?></span>
+            </div>
+            <div class="yt-menu-content">
+            <?php if( $var_yttheme->getParam('menustyle') == 'mega' ){
+                echo $this->getChildHtml('megaMenu');
+            } else {
+                echo $this->getChildHtml('topMenu');
+            } ?>
+            </div>
+        </div>
+        <div class="search-mobile">
+        	<a class="btn-search-mobile"><?php echo $this->__("Search"); ?></a>
+        	<?php echo $this->getChildHtml('topSearch') ?>
+        </div>
+    </div>
+  
+</div>
+</div>
+</div>
+		
+<?php } ?>
+
+
+<?php
+include (dirname(__FILE__).'/new_cpanel.phtml');
+include (dirname(__FILE__).'/backtotop.phtml');
+?>
+
+
+
+

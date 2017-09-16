@@ -1,0 +1,278 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */ 
+ 
+ 
+include (dirname(dirname(__FILE__)).'/sm/yt_prepar.php');
+global $var_yttheme;
+?>
+<meta http-equiv="Content-Type" content="<?php echo $this->getContentType() ?>" />
+<title><?php echo $this->getTitle() ?></title>
+<meta name="description" content="<?php echo htmlspecialchars($this->getDescription()) ?>" />
+<meta name="keywords" content="<?php echo htmlspecialchars($this->getKeywords()) ?>" />
+<meta name="robots" content="<?php echo htmlspecialchars($this->getRobots()) ?>" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<link rel="icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<link rel="shortcut icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<!--[if lt IE 7]>
+<script type="text/javascript">
+//<![CDATA[
+    var BLANK_URL = '<?php echo $this->helper('core/js')->getJsUrl('blank.html') ?>';
+    var BLANK_IMG = '<?php echo $this->helper('core/js')->getJsUrl('spacer.gif') ?>';
+//]]>
+</script>
+<![endif]-->
+<?php echo $this->getCssJsHtml() ?>
+<?php echo $this->getChildHtml() ?>
+<?php echo $this->helper('core/js')->getTranslatorScript() ?>
+<?php echo $this->getIncludes() ?>
+
+<script type="text/javascript">
+//<![CDATA[
+	var SKIN_URL = '<?php echo $var_yttheme->skinurl();?>';
+	var TMPL_NAME = '<?php echo $var_yttheme->template;?>';
+	var TMPL_COOKIE = <?php echo json_encode($paramscookie); ?>;
+//]]>
+</script>
+
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl('css/yt-responsive.css'); ?>" type="text/css" />
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl('css/colors/'.$var_yttheme->getParam('sitestyle').'.css') ?>" type="text/css" />
+<!--<link rel="stylesheet" href="<?php //echo $this->getSkinUrl('css/jquery.fancybox-1.3.4.css'); ?>" type="text/css" />-->
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl('css/jquery.fancybox.css'); ?>" type="text/css" />
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl('css/cloudzoom.css'); ?>" type="text/css" />
+<?php if( $var_yttheme->getParam('showCpanel') ) { ?>	
+	<link rel="stylesheet" href="<?php echo $this->getSkinUrl('css/minicolors/jquery.miniColors.css'); ?>" type="text/css" />
+<?php } ?>
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl('css/new_cpanel.css'); ?>" type="text/css" />
+
+<?php 
+if( isset($_SERVER['HTTPS'] )  && $_SERVER['HTTPS'] != 'off' ) {
+    $http = 'https';
+} else {
+    $http = 'http';
+}
+
+$googleWebFont = $var_yttheme->getParam('googleWebFont');
+$googleWebFontTargets = $var_yttheme->getParam('googleWebFontTargets');
+if ( $googleWebFont != "" && $googleWebFont != "" ) {
+	$googleWebFontFamily = str_replace(" ","+",$googleWebFont);
+	$googleWebFontFamily = strpos($googleWebFontFamily, ':')?substr($googleWebFontFamily, 0, strpos($googleWebFontFamily, ':')):$googleWebFontFamily;
+}
+
+?>
+<link rel="stylesheet" type="text/css" href="<?php echo $http;?>://fonts.googleapis.com/css?family=<?php echo $googleWebFontFamily; ?>" media="all" />
+
+<style type="text/css">
+<?php
+// Body Font size
+echo 'body{	
+		font-size:'.$var_yttheme->getParam('fontsize').';	
+	}';	
+if( trim($var_yttheme->getParam('font_name'))!='' )
+	echo '
+		body{
+			font-family:'.$var_yttheme->getParam('font_name').';	
+		}';
+if($googleWebFont=='Open Sans')
+	echo "
+	@font-face {
+	  font-family: 'Open Sans';
+	  font-style: normal;
+	  font-weight: 300;
+	  src: local('Open Sans Light'), local('OpenSans-Light'), url(http://themes.googleusercontent.com/static/fonts/opensans/v8/DXI1ORHCpsQm3Vp6mXoaTXhCUOGz7vYGh680lGh-uXM.woff) format('woff');
+	}
+	";
+if( trim($googleWebFontTargets)!="" )
+	echo $googleWebFontTargets.'{
+			font-family:'.$googleWebFont.', serif !important
+		}';
+/*if( trim($googleWebFontTargets)!="" && $googleWebFont=='Open Sans' ) 
+	echo $googleWebFontTargets.'{
+			font-weight:300
+		}';*/
+		
+	echo '
+		body.'.$var_yttheme->template.'{	
+			color:'.$var_yttheme->getParam('textcolor').' ;			
+		}
+		body.'.$var_yttheme->template.'{	
+			background-color:'.$var_yttheme->getParam('bgcolor').' ;
+		}
+		a{	
+			color:'.$var_yttheme->getParam('linkcolor').' ;	
+		}
+		#yt_wrapper .page-title:before{
+			background-color:'.$var_yttheme->getParam('textcolor').' ;
+		}		
+		}';
+?>
+</style>
+
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/jquery-1.7.2.min.js') ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/jquery.noconflict.js') ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/jquery.uniform.min.js') ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/jquery.jqtransform.js') ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('bootstrap/js/bootstrap.min.js') ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/yt-script.js') ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/yt-extend.js') ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/cloud-zoom.1.0.2.js') ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/jcarousellite_1.0.1.js') ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/jquery.easing.js') ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/jquery.cookie.min.js') ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/jquery.accordion_snyderplace.js') ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/respond.src.js') ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/jquery.fancybox.js') ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/fancybox-buttons.js') ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/jquery.session.js')?>"></script>
+<?php if( $var_yttheme->getParam('showCpanel') ) { ?>
+	<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/ytcpanel.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/minicolors/jquery.miniColors.js') ?>"></script>
+<?php } ?>
+
+<script type="text/javascript">
+//<![CDATA[
+	jQuery(document).ready(function($){  
+		
+		// show-hidden login form 
+		/*$(".header-login .login-quick").hide();
+		$('.header-login a.login').click(function(){
+			$this = $(this);
+			$this.toggleClass("actived");
+			$(".login-quick").slideToggle("fast");
+		});*/
+		
+		if( $(window).width() < 768){	
+		   $(".toolbar .select-inner ul#limiter").hide();
+			$('.toolbar .select-inner .overwrite-limiter').click(function(){
+				$this = $(this);
+				$this.toggleClass("actived");
+				$(".toolbar .select-inner ul#limiter").slideToggle("fast");
+			});
+			$(".toolbar .select-inner ul#sort_by").hide();
+			$('.toolbar .select-inner .overwrite-sortby').click(function(){
+				$this = $(this);
+				$this.toggleClass("actived");
+				$(".toolbar .select-inner ul#sort_by").slideToggle("fast");
+			});
+		}
+		//show-hidden account, search  in mobile
+		$(".quicklink-mobile .quicklink-mobile-content").hide();
+		$('.quicklink-mobile .btn-quicklink').click(function(){
+			$this = $(this);
+			$this.toggleClass("actived");
+			$(".quicklink-mobile .quicklink-mobile-content").slideToggle("fast");
+		});
+		$(".search-mobile #search_mini_form").hide();
+		$('.search-mobile .btn-search-mobile').click(function(){
+			$this = $(this);
+			$this.toggleClass("actived");
+			$(".search-mobile #search_mini_form").slideToggle("fast");
+		});
+		
+		//style for select option, radio...
+		$("#chk_remember").uniform();
+		$("#poll-answers .radio").uniform();
+		//$("#product-options-wrapper select").uniform();
+
+		
+		//change select,option -> ul,li	
+		 //$(".toolbar .select-inner").jqTransform();
+		$(".sm-searbox-content").jqTransform();
+		$(".currency-switcher").jqTransform();	
+		$(".currency-switcher .jqTransformSelectWrapper").each(function(){		
+			arr_tit = new Array(); i=0;
+			$(this).find('select option').each(function(){			
+				arr_tit[i] = $(this).attr('title');
+				i++;
+			})
+			j=0;
+			$(this).find('ul li').each(function(){			
+				$(this).find('a').attr('title', arr_tit[j]);
+				j++; 
+			});
+		});
+		$(".language-switcher").jqTransform();
+		$(".language-switcher .jqTransformSelectWrapper").each(function(){
+			arr_bg = new Array();
+			arr_tit = new Array(); i=0;
+			$(this).find('select option').each(function(){
+				arr_bg[i] = $(this).css('background-image'); 
+				arr_tit[i] = $(this).attr('title');
+				i++;
+			})
+			j=0;
+			$(this).find('ul li').each(function(){
+				if(arr_bg[j]!="none"){
+					$(this).find('a').css('background-image', arr_bg[j]);
+				}
+				$(this).find('a').attr('title', arr_tit[j]);
+				j++; 
+			});
+		});
+		
+		$('.language-switcher .jqTransformSelectWrapper ul li a.selected,.language-switcher .jqTransformSelectWrapper div span').css('background-image', $('#select-language option[selected="selected"]').css('background-image'));
+		
+
+		//opacity content when hover menu megamenu	
+		/*$('.sm_megamenu_wrapper_horizontal_menu .sm_megamenu_menu li.sm_megamenu_drop.sm_megamenu_lv1').hover(function(){
+			$('#yt_header').css({'z-index':'9990', 'position': 'relative'});
+			$('#blurmask').css({'display':'block', 'z-index': '999'});
+		},function(){
+			$('#blurmask').css({'display':'none', 'z-index': '9991','margin-top': '0'});
+			$('#yt_header').css({'z-index':'990', 'position': 'relative'});			
+		});
+		
+		$('.yt-menu-nav li.level0.parent').hover(function(){
+			$('#yt_header').css({'z-index':'9990', 'position': 'relative'});
+			$('#blurmask').css({'display':'block', 'z-index': '999'});
+		},function(){
+			$('#blurmask').css({'display':'none', 'z-index': '9991','margin-top': '0'});
+			$('#yt_header').css({'z-index':'990', 'position': 'relative'});			
+		});	*/
+		
+		//page title
+		/*if( $('.yt-product-detail .product-shop .product-name').length && $('#name-top').length ){
+			$('#name-top').html($('.yt-product-detail .product-shop .product-name').html());
+			$('.yt-product-detail .product-shop .product-name').remove();
+		}
+		else if( $('#yt_content #yt_main .page-title').length && $('#name-top').length ){
+			$('#name-top').html($('#yt_content #yt_main .page-title').html());
+			$('#yt_content #yt_main .page-title').remove();
+		}
+		if( $('#yt_content #yt_main .category-description').length && $('#desc-top').length ){
+			$('#desc-top').html($('#yt_content #yt_main .category-description').html());
+			$('#yt_content #yt_main .category-description').remove();
+		}
+		if( $('#yt_content #yt_main .product-next-pre').length && $('#product-next-pre').length ){
+			$('#product-next-pre').html($('#yt_content #yt_main .product-next-pre').html());
+			$('#yt_content #yt_main .product-next-pre').remove();
+		}*/
+		
+	});
+//]]>
+	
+</script>
+
+

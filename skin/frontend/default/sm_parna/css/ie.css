@@ -1,0 +1,21 @@
+
+.tags-list > li{
+	display:inline-block !important;
+}
+.form-list input.input-text, input.input-text{
+	height:30px;
+	line-height:30px;
+	padding:0 0 0 10px!important;	
+}
+input[type="checkbox"]{
+	border:none !important;
+	padding-top:4px !important;
+}
+
+/*--------------------- parna -----------------------*/
+#newsletter-popup #dont-show-again{
+	margin-top:0px !important;
+}
+#btn_categories{
+	border-bottom:none !important;
+}
