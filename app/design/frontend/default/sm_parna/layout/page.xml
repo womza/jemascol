@@ -74,7 +74,14 @@ Default layout, loads most of the pages
                 </block>
 				
                 <block type="core/text_list" name="slider_images_home" as="slider_images_home" translate="label">
-                    <label>SM Image Slider</label>
+                    <block type="imageslider/list" name="imageslider.list.default" template="sm/imageslider/default.phtml">
+                        <reference name="head">
+                            <action method="addItem">
+                                <type>skin_css</type>
+                                <name>sm/imageslider/css/imageslider.css</name>
+                            </action>
+                        </reference>
+			        </block>
                 </block>
 				<block type="core/text_list" name="megaMenu" as="megaMenu" />
                 <block type="core/text_list" name="top.menu" as="topMenu" />
