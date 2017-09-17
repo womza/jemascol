@@ -66,9 +66,9 @@ class Sm_Shopby_Model_Resource_Indexer_Attribute extends Mage_Index_Model_Resour
         $collection = Mage::getSingleton('eav/config')
             ->getEntityType(Mage_Catalog_Model_Product::ENTITY)
             ->getAttributeCollection()
-            ->addFieldToFilter('`main_table`.`frontend_input`', array('in' => array('select', 'multiselect')));
+            ->addFieldToFilter('frontend_input', array('in' => array('select', 'multiselect')));
         if (!empty($attributeId)) {
-            $collection->addFieldToFilter('`main_table`.`attribute_id`', $attributeId);
+            $collection->addFieldToFilter('attribute_id', $attributeId);
         }
 
         return $collection;
