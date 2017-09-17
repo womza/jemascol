@@ -21,7 +21,7 @@
 	}
 	$cls_str = implode(', ', $cls);
  ?>
- 
+ <script src="<?php print $this->getSkinUrl('js/jquery.fancybox.js'); ?>"></script>
 <script type="text/javascript">
 	//<![CDATA[
 	jQuery(document).ready(function ($) {
@@ -176,7 +176,7 @@
 					
 			}
 		});
-		
+
 		setInterval(function(){ _SmQuickView(); } ,1000);
 	});
 	//]]>
