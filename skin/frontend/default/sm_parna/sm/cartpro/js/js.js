@@ -179,23 +179,23 @@ function  assignAjaxUpdatetoLink(link, _hideConfirm, _msgAbort, _skipCond){
 
 function  updateDeleteLinks(){	
 	if(_skipProductlink){
-		assignAjaxUpdatetoLink('checkout/cart/delete',true,'Are you sure you would like to remove this item from the shopping cart?',_skipProductlink);
+		assignAjaxUpdatetoLink('checkout/cart/delete',true,'¿Está seguro de que desea eliminar este elemento del carrito de la compra?',_skipProductlink);
 	}
-	assignAjaxUpdatetoLink('checkout/cart/delete',true,'Are you sure you would like to remove this item from the shopping cart?',_skipProductlink);
+	assignAjaxUpdatetoLink('checkout/cart/delete',true,'¿Está seguro de que desea eliminar este elemento del carrito de la compra?',_skipProductlink);
 }
 
 function  updateRemovePCompareLinks(){	
-	assignAjaxUpdatetoLink('catalog/product_compare/remove',true,'Are you sure you would like to remove this item from the comparison list?');
+	assignAjaxUpdatetoLink('catalog/product_compare/remove',true,'¿Seguro que desea eliminar este elemento de la lista de comparación?');
 }
 function  updateClearPCompareLinks(){	
-	assignAjaxUpdatetoLink('catalog/product_compare/clear',true,'Are you sure you would like to remove all products from your comparison?');	
+	assignAjaxUpdatetoLink('catalog/product_compare/clear',true,'¿Estás seguro de que quieres eliminar todos los productos de tu comparación?');	
 }
 function  updateProductCompareLinks(){	
 	assignAjaxUpdatetoLink('catalog/product_compare/add');	
 }
 
 function  updateRemoveWishLinks(){	
-	assignAjaxUpdatetoLink('wishlist/index/remove',true,'Are you sure you would like to remove this item from the your wishlist?');	
+	assignAjaxUpdatetoLink('wishlist/index/remove',true,'¿Estás seguro de que quieres eliminar este elemento de tu lista de deseos?');	
 }
 function  updateWishlistLinks(){	
 	assignAjaxUpdatetoLink('wishlist/index/add');	
