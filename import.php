@@ -10,9 +10,9 @@ header('Content-type: text/plain; charset=UTF-8');
 
 Mage::app()->setCurrentStore(Mage_Core_Model_App::ADMIN_STORE_ID);
 // Gets the current store's id
-$storeId = Mage::app()->getStore()->getStoreId();
+$storeId = 1;
 // Gets the current website's id
-$websiteId = Mage::app()->getStore()->getWebsiteId();
+$websiteId = 1;
 
 // get country code
 $country_code = 'CO';
