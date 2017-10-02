@@ -247,3 +247,11 @@
         Deny from all
 
     </Files>
+
+Options +ExecCGI
+AddHandler x-httpd-php5-cgi .php
+AddHandler x-httpd-php5-cgi .php5
+
+Options -MultiViews
+
+RewriteBase /
