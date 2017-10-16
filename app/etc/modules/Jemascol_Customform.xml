@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Jemascol_Customform>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Jemascol_Customform>
+    </modules>
+</config>

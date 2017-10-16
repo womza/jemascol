@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Jemascol_Customform>
+            <version>0.0.1</version>
+        </Jemascol_Customform>
+    </modules>
+    <global>
+        <blocks>
+            <customform><!-- block alias -->
+                <class>Jemascol_Customform_Block</class>
+            </customform>
+        </blocks>
+        <helpers>
+            <customform><!-- helper alias -->
+                <class>Jemascol_Customform_Helper</class>
+            </customform>
+        </helpers>
+    </global>
+    <frontend>
+        <routers>
+            <customform>
+                <use>standard</use>
+                <args>
+                    <module>Jemascol_Customform</module>
+                    <frontName>quejas-y-reclamos</frontName><!-- url key for module -->
+                </args>
+            </customform>
+        </routers>
+        <layout>
+            <updates>
+                <jemascol_customform>
+                    <file>jemascol_customform.xml</file><!-- frontend layout file -->
+                </jemascol_customform>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Jemascol_Customform>
+                    <files>
+                        <default>Jemascol_Customform.csv</default><!-- translation file (not mandatory) -->
+                    </files>
+                </Jemascol_Customform>
+            </modules>
+        </translate>
+    </frontend>
+</config>
